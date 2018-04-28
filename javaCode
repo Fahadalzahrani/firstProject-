@@ -1,0 +1,52 @@
+
+public class Institute {
+
+	private String name;
+	private Person arb[];
+	private int nb;
+	
+	public Institute(String name){
+		this.name= name;
+		this.arb = new Person[2000];
+		this.nb = 0;
+	}
+	
+	public void addPrson(Person p){
+		if(nb>=arb.length)
+			
+		if(p instanceof Graduate)
+			arb[nb] = new Graduate((Graduate) p);
+		else
+			arb[nb] = new Undergraduate ((Undergraduate)p );
+		nb++;
+	}
+	
+	public int countUnder(double s){
+		 int count = 0;
+		for (int i=0; i<nb; i++){
+			if(arb[i] instanceof Undergraduate)
+				if(arb[i].calculateScore() >= s)
+					count++;
+			
+		}
+		return count;
+		
+		}
+		
+		public Graduate[] getGraduate(int n){
+			Graduate[] g = new Graduate[nb];
+			int j=0;
+			for (int i=0; i<nb; i++){
+				if (arb[i] instanceof Graduate){
+					Graduate x = (Graduate) arb[i];
+					if (x.getNbPapers() > n){
+						g[j] = x;
+						j++;
+					}
+				}
+			}
+			return g;
+		}
+		
+					
+}
